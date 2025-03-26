@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
+  <title>SysPay - Contador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      background-image: url('images/bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .container {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+    .button {
+      display: inline-block;
+      background-color: #49059d;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin: 5px;
+    }
+    .button:hover {
+      background-color: #935bf3;
+    }
+    #contador {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #contador div {
+      text-align: center;
+      margin: 0 5px;
+    }
+    #contador div span {
+      display: block;
+      font-size: 42px;
+      color: #ececec;
+    }
+    #contador div label {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tela Inicial -->
+  <div class="container" id="initialScreen">
+    <h1>Prezado cliente!</h1>
+    <p>
+      Estamos desenvolvendo um novo e moderno banco digital com um sistema seguro anti fraudes para a sua conta/carteira SYSPAY DIGITAL!
+      <br><br>
+      Enquanto isso, você pode realizar o seu pré-cadastro, mesmo que já possua uma conta na plataforma antiga.
+      <br>
+      Isso para atualizar seus dados e garantir acesso à nova plataforma.
+    </p>
+    <!-- Botão para cadastro -->
+    <a href="http://app.syspaydigital.com.br/cadastro" class="button">Cadastrar aqui!</a>
+    <!-- Botão para login -->
+    <a href="http://app.syspaydigital.com.br" class="button">Login</a>
+
+    <div id="contador">
+      <div>
+        <span id="dias">45</span>
+        <label>Dias</label>
+      </div>
+      <div>
+        <span id="horas">18</span>
+        <label>Horas</label>
+      </div>
+      <div>
+        <span id="minutos">32</span>
+        <label>Minutos</label>
+      </div>
+      <div>
+        <span id="segundos">05</span>
+        <label>Segundos</label>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function atualizarContador() {
+      const lancamento = new Date('2025-07-21T00:00:00');
+      const agora = new Date();
+      const diferenca = lancamento - agora;
+
+      if (diferenca > 0) {
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+        document.getElementById('dias').textContent = dias;
+        document.getElementById('horas').textContent = horas;
+        document.getElementById('minutos').textContent = minutos;
+        document.getElementById('segundos').textContent = segundos;
+      }
+    }
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+
+
+</body></html>
